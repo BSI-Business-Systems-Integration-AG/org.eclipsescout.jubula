@@ -14,5 +14,5 @@
     <language>de_DE</language>
     <testsuite>PRODUCTIVE</testsuite>
     <datadir>.</datadir>
-    <resultdir>.</resultdir>
+    <resultdir>./target</resultdir>
 </configuration>

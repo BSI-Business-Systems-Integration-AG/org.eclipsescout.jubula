@@ -6,7 +6,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<jubula.home>C:\dev\jubula\jubula_1.3.00071</jubula.home>
+		<jubula.home>C:\ci\Jubula\jubula_1.3.00071</jubula.home>
 		<aut.agent.home>${jubula.home}/server</aut.agent.home>
 		<testexec>${jubula.home}/jubula/testexec.exe</testexec>
 		<dbtool>${jubula.home}/jubula/dbtool.exe</dbtool>
@@ -29,25 +29,23 @@
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.2.1</version>
 				<executions>
-
-
-					<!-- <execution> -->
-					<!-- <id>Importing XML into DB</id> -->
-					<!-- <phase>pre-integration-test</phase> -->
-					<!-- <goals> -->
-					<!-- <goal>exec</goal> -->
-					<!-- </goals> -->
-					<!-- <configuration> -->
-					<!-- <executable>${dbtool}</executable> -->
-					<!-- <arguments> -->
-					<!-- <argument>-c</argument> -->
-					<!-- <argument>${jubula.config}</argument> -->
-					<!-- <argument>-import</argument> -->
-					<!-- <argument>${jubula.tests}</argument> -->
-					<!-- </arguments> -->
-					<!-- <workingDirectory>${jubula.home}/jubula/</workingDirectory> -->
-					<!-- </configuration> -->
-					<!-- </execution> -->
+<!-- 					<execution> -->
+<!-- 					<id>Importing XML into DB</id> -->
+<!-- 					<phase>pre-integration-test</phase> -->
+<!-- 					<goals> -->
+<!-- 					<goal>exec</goal> -->
+<!-- 					</goals> -->
+<!-- 					<configuration> -->
+<!-- 					<executable>${dbtool}</executable> -->
+<!-- 					<arguments> -->
+<!-- 					<argument>-c</argument> -->
+<!-- 					<argument>${jubula.config}</argument> -->
+<!-- 					<argument>-import</argument> -->
+<!-- 					<argument>${jubula.tests}</argument> -->
+<!-- 					</arguments> -->
+<!-- 					<workingDirectory>${jubula.home}/jubula/</workingDirectory> -->
+<!-- 					</configuration> -->
+<!-- 					</execution> -->
 					<execution>
 						<id>Running Jubula Tests</id>
 						<phase>integration-test</phase>
@@ -65,35 +63,35 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.6</version>
-				<executions>
-					<execution>
-						<id>Start AUT Agent</id>
-						<phase>pre-integration-test</phase>
-						<configuration>
-							<target>
-								<exec executable="${aut.agent.home}/autagent.exe" spawn="true" />
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>Stop AUT Agent</id>
-						<phase>post-integration-test</phase>
-						<configuration>
-							<target>
-								<exec executable="${aut.agent.home}/stopautagent.exe"
-									spawn="true" />
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
+<!-- 			<plugin> -->
+<!-- 				<artifactId>maven-antrun-plugin</artifactId> -->
+<!-- 				<version>1.6</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>Start AUT Agent</id> -->
+<!-- 						<phase>pre-integration-test</phase> -->
+<!-- 						<configuration> -->
+<!-- 							<target> -->
+<!-- 								<exec executable="${aut.agent.home}/autagent.exe" spawn="true" /> -->
+<!-- 							</target> -->
+<!-- 						</configuration> -->
+<!-- 						<goals> -->
+<!-- 							<goal>run</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 					<execution> -->
+<!-- 						<id>Stop AUT Agent</id> -->
+<!-- 						<phase>post-integration-test</phase> -->
+<!-- 						<configuration> -->
+<!-- 							<target> -->
+<!-- 								<exec executable="${aut.agent.home}/stopautagent.exe" -->
+<!-- 									spawn="true" /> -->
+<!-- 							</target> -->
+<!-- 						</configuration> -->
+<!-- 						<goals> -->
+<!-- 							<goal>run</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
 
 <!-- 					<execution> -->
 <!-- 					<id>download-files</id> -->
@@ -109,8 +107,8 @@
 <!-- 					</configuration> -->
 <!-- 					</execution> -->
 
-				</executions>
-			</plugin>
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 		</plugins>
 
 	</build>
