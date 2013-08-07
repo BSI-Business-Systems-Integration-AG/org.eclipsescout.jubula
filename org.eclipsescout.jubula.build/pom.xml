@@ -1,0 +1,118 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.eclipsescout.jubula</groupId>
+	<artifactId>org.eclipsescout.jubula</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<jubula.home>C:\dev\jubula\jubula_1.3.00071</jubula.home>
+		<aut.agent.home>${jubula.home}/server</aut.agent.home>
+		<testexec>${jubula.home}/jubula/testexec.exe</testexec>
+		<dbtool>${jubula.home}/jubula/dbtool.exe</dbtool>
+		<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
+		<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
+		<base.aut.url>http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/kepler/R/eclipse-scout-kepler-R-win32.zip&amp;r=1</base.aut.url>
+
+		<scout-updatesite>http://download.eclipse.org/scout/nightly</scout-updatesite>
+		<staging>http://download.eclipse.org/releases/staging</staging>
+		<kepler>http://download.eclipse.org/releases/staging</kepler>
+		<tycho-version>0.18.0</tycho-version>
+		<sites>${scout-updatesite},${staging}</sites>
+		<features>org.eclipse.scout.feature.group</features>
+	</properties>
+
+	<build>
+	<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+
+
+					<!-- <execution> -->
+					<!-- <id>Importing XML into DB</id> -->
+					<!-- <phase>pre-integration-test</phase> -->
+					<!-- <goals> -->
+					<!-- <goal>exec</goal> -->
+					<!-- </goals> -->
+					<!-- <configuration> -->
+					<!-- <executable>${dbtool}</executable> -->
+					<!-- <arguments> -->
+					<!-- <argument>-c</argument> -->
+					<!-- <argument>${jubula.config}</argument> -->
+					<!-- <argument>-import</argument> -->
+					<!-- <argument>${jubula.tests}</argument> -->
+					<!-- </arguments> -->
+					<!-- <workingDirectory>${jubula.home}/jubula/</workingDirectory> -->
+					<!-- </configuration> -->
+					<!-- </execution> -->
+					<execution>
+						<id>Running Jubula Tests</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${testexec}</executable>
+							<arguments>
+								<argument>-c</argument>
+								<argument>${jubula.config}</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>Start AUT Agent</id>
+						<phase>pre-integration-test</phase>
+						<configuration>
+							<target>
+								<exec executable="${aut.agent.home}/autagent.exe" spawn="true" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>Stop AUT Agent</id>
+						<phase>post-integration-test</phase>
+						<configuration>
+							<target>
+								<exec executable="${aut.agent.home}/stopautagent.exe"
+									spawn="true" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+
+<!-- 					<execution> -->
+<!-- 					<id>download-files</id> -->
+<!-- 					<phase>prepare-package</phase> -->
+<!-- 					<goals> -->
+<!-- 					<goal>run</goal> -->
+<!-- 					</goals> -->
+<!-- 					<configuration> -->
+<!-- 					<target> -->
+<!-- 					<get src="${base.aut.url}" dest="${project.build.directory}/eclipse.zip" usetimestamp="true" /> -->
+<!-- 					<unzip src="${project.build.directory}/eclipse.zip" dest="${project.build.directory}"/> -->
+<!-- 					</target> -->
+<!-- 					</configuration> -->
+<!-- 					</execution> -->
+
+				</executions>
+			</plugin>
+		</plugins>
+
+	</build>
+
+</project>
