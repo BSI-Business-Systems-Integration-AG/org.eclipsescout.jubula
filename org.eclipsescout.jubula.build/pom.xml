@@ -21,7 +21,7 @@
 		<jubula-updatesite>http://download.eclipse.org/releases/kepler</jubula-updatesite>
 		<tycho-version>0.18.0</tycho-version>
 		<sites>${scout-updatesite},${staging},${jubula-updatesite}</sites>
-		<features>org.eclipse.scout.feature.group,org.eclipse.jubula.feature.launch.rcp.feature.group</features>
+		<features>org.eclipse.scout.feature.group,org.eclipse.jubula.rc.rcp</features>
 	</properties>
 
 	<build>
@@ -39,7 +39,7 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>eclipsec.exe</executable>
+							<executable>${aut.home}\eclipse\eclipsec.exe</executable>
 							<arguments>
 								<argument>-application</argument>
 								<argument>org.eclipse.equinox.p2.director</argument>
@@ -49,7 +49,7 @@
 								<argument>-installIUs</argument>
 								<argument>${features}</argument>
 							</arguments>
-							<workingDirectory>${aut.home}/eclipse</workingDirectory>
+<!-- 							<workingDirectory>${aut.home}/eclipse</workingDirectory> -->
 						</configuration>
 					</execution>
 						
@@ -155,7 +155,7 @@
 <!-- 						</goals> -->
 <!-- 						<configuration> -->
 <!-- 							<target> -->
-<!-- 								<echo file="${aut.home/Eclipse/configuration/org.eclipse.equinox.simpleconfigurator/bundles.info}" append="true"></echo> -->
+<!-- 								<echo file="${aut.home}/Eclipse/configuration/org.eclipse.equinox.simpleconfigurator/bundles.info" append="true"></echo> -->
 <!-- 							</target> -->
 <!-- 						</configuration> -->
 <!-- 					</execution> -->
