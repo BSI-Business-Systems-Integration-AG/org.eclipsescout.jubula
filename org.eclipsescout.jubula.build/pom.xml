@@ -13,6 +13,7 @@
 		<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
 		<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
 		<base.aut.url>http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/kepler/R/eclipse-scout-kepler-R-win32.zip&amp;r=1</base.aut.url>
+		<aut.home>C:\ci\Jubula\AUT</aut.home>
 
 		<scout-updatesite>http://download.eclipse.org/scout/nightly</scout-updatesite>
 		<staging>http://download.eclipse.org/releases/staging</staging>
@@ -29,22 +30,60 @@
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.2.1</version>
 				<executions>
+					<!-- add scout to eclipse  -->
+					<execution>
+						<id>Add Scout to Eclipse</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>eclipsec.exe</executable>
+							<arguments>
+								<argument>-application</argument>
+								<argument>org.eclipse.equinox.p2.director</argument>
+								<argument>-nosplash</argument>
+								<argument>-repository</argument>
+								<argument>${sites}</argument>
+								<argument>-installIUs</argument>
+								<argument>${feature}</argument>
+							</arguments>
+							<workingDirectory>${aut.home}/eclipse</workingDirectory>
+						</configuration>
+					</execution>
+						
 <!-- 					<execution> -->
-<!-- 					<id>Importing XML into DB</id> -->
-<!-- 					<phase>pre-integration-test</phase> -->
-<!-- 					<goals> -->
-<!-- 					<goal>exec</goal> -->
-<!-- 					</goals> -->
-<!-- 					<configuration> -->
-<!-- 					<executable>${dbtool}</executable> -->
-<!-- 					<arguments> -->
-<!-- 					<argument>-c</argument> -->
-<!-- 					<argument>${jubula.config}</argument> -->
-<!-- 					<argument>-import</argument> -->
-<!-- 					<argument>${jubula.tests}</argument> -->
-<!-- 					</arguments> -->
-<!-- 					<workingDirectory>${jubula.home}/jubula/</workingDirectory> -->
-<!-- 					</configuration> -->
+<!-- 						<id>Delete Projects from DB</id> -->
+<!-- 						<phase>package</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>exec</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<executable>${dbtool}</executable> -->
+<!-- 							<arguments> -->
+<!-- 								<argument>-c</argument> -->
+<!-- 								<argument>${jubula.config}</argument> -->
+<!-- 								<argument>-deleteall</argument> -->
+<!-- 							</arguments> -->
+<!-- 							<workingDirectory>${jubula.home}/jubula/</workingDirectory> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 					<execution> -->
+<!-- 						<id>Importing XML into DB</id> -->
+<!-- 						<phase>pre-integration-test</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>exec</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<executable>${dbtool}</executable> -->
+<!-- 							<arguments> -->
+<!-- 								<argument>-c</argument> -->
+<!-- 								<argument>${jubula.config}</argument> -->
+<!-- 								<argument>-import</argument> -->
+<!-- 								<argument>${jubula.tests}</argument> -->
+<!-- 							</arguments> -->
+<!-- 							<workingDirectory>${jubula.home}/jubula/</workingDirectory> -->
+<!-- 						</configuration> -->
 <!-- 					</execution> -->
 					<execution>
 						<id>Running Jubula Tests</id>
@@ -63,10 +102,10 @@
 				</executions>
 			</plugin>
 
-<!-- 			<plugin> -->
-<!-- 				<artifactId>maven-antrun-plugin</artifactId> -->
-<!-- 				<version>1.6</version> -->
-<!-- 				<executions> -->
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
 <!-- 					<execution> -->
 <!-- 						<id>Start AUT Agent</id> -->
 <!-- 						<phase>pre-integration-test</phase> -->
@@ -93,22 +132,22 @@
 <!-- 						</goals> -->
 <!-- 					</execution> -->
 
-<!-- 					<execution> -->
-<!-- 					<id>download-files</id> -->
-<!-- 					<phase>prepare-package</phase> -->
-<!-- 					<goals> -->
-<!-- 					<goal>run</goal> -->
-<!-- 					</goals> -->
-<!-- 					<configuration> -->
-<!-- 					<target> -->
-<!-- 					<get src="${base.aut.url}" dest="${project.build.directory}/eclipse.zip" usetimestamp="true" /> -->
-<!-- 					<unzip src="${project.build.directory}/eclipse.zip" dest="${project.build.directory}"/> -->
-<!-- 					</target> -->
-<!-- 					</configuration> -->
-<!-- 					</execution> -->
+					<execution>
+						<id>download-files</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<get src="${base.aut.url}" dest="${project.build.directory}/eclipse.zip" usetimestamp="true" />
+								<unzip src="${project.build.directory}/eclipse.zip" dest="${aut.home}"/>
+							</target>
+						</configuration>
+					</execution>
 
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
+				</executions>
+			</plugin>
 		</plugins>
 
 	</build>
