@@ -18,9 +18,10 @@
 		<scout-updatesite>http://download.eclipse.org/scout/nightly</scout-updatesite>
 		<staging>http://download.eclipse.org/releases/staging</staging>
 		<kepler>http://download.eclipse.org/releases/staging</kepler>
+		<jubula-updatesite>http://download.eclipse.org/releases/kepler</jubula-updatesite>
 		<tycho-version>0.18.0</tycho-version>
-		<sites>${scout-updatesite},${staging}</sites>
-		<features>org.eclipse.scout.feature.group</features>
+		<sites>${scout-updatesite},${staging},${jubula-updatesite}</sites>
+		<features>org.eclipse.scout.feature.group,org.eclipse.jubula.feature.launch.rcp.feature.group</features>
 	</properties>
 
 	<build>
@@ -32,7 +33,7 @@
 				<executions>
 					<!-- add scout to eclipse  -->
 					<execution>
-						<id>Add Scout to Eclipse</id>
+						<id>Add Scout and Jubula Launcher to Eclipse</id>
 						<phase>process-classes</phase>
 						<goals>
 							<goal>exec</goal>
@@ -46,7 +47,7 @@
 								<argument>-repository</argument>
 								<argument>${sites}</argument>
 								<argument>-installIUs</argument>
-								<argument>${feature}</argument>
+								<argument>${features}</argument>
 							</arguments>
 							<workingDirectory>${aut.home}/eclipse</workingDirectory>
 						</configuration>
