@@ -27,6 +27,29 @@
 	<build>
 	<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-clean-plugin</artifactId>
+	            <version>2.4.1</version>
+				<executions>
+					<execution>
+					    <id>cleanup</id>
+					    <phase>process-resources</phase>
+					    <goals>
+					        <goal>clean</goal>
+					    </goals>
+			            <configuration>
+	                    	<excludeDefaultDirectories>true</excludeDefaultDirectories>
+			                <filesets>
+			                    <fileset>
+			                        <directory>${aut.home}\eclipse</directory>
+			                        <followSymlinks>false</followSymlinks>
+			                    </fileset>
+			                </filesets>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.2.1</version>
@@ -48,6 +71,8 @@
 								<argument>${sites}</argument>
 								<argument>-installIUs</argument>
 								<argument>${features}</argument>
+								<argument>-vm</argument>
+								<argument>${jubula.home}\jre\bin\client\jvm.dll</argument>
 							</arguments>
 							<workingDirectory>${aut.home}\eclipse</workingDirectory>
 						</configuration>
@@ -146,6 +171,19 @@
 							</target>
 						</configuration>
 					</execution>
+					
+<!-- 					<execution> -->
+<!-- 						<id>delete-old-eclipse</id> -->
+<!-- 						<phase>process-resources</phase> -->
+<!-- 	                    <configuration> -->
+<!-- 	                        <tasks> -->
+<!-- 	                            <delete dir="${ant.home}\eclipse"/> -->
+<!-- 	                        </tasks> -->
+<!-- 	                    </configuration> -->
+<!-- 	                    <goals> -->
+<!-- 	                        <goal>run</goal> -->
+<!-- 	                    </goals> -->
+<!-- 		            </execution> -->
 					
 <!-- 					<execution> -->
 <!-- 						<id>append plugin in simpleconfig of eclipse</id> -->
