@@ -18,9 +18,9 @@
 		<scout-updatesite>http://download.eclipse.org/scout/nightly</scout-updatesite>
 		<staging>http://download.eclipse.org/releases/staging</staging>
 		<kepler>http://download.eclipse.org/releases/staging</kepler>
-		<jubula-updatesite>http://download.eclipse.org/releases/kepler</jubula-updatesite>
+		<jubula-updatesite>http://download.eclipse.org/releases/indigo</jubula-updatesite>
 		<tycho-version>0.18.0</tycho-version>
-		<sites>${scout-updatesite},${staging},${jubula-updatesite}</sites>
+		<sites>${scout-updatesite},${jubula-updatesite}</sites>
 		<features>org.eclipse.scout.feature.group,org.eclipse.jubula.rc.rcp</features>
 	</properties>
 
