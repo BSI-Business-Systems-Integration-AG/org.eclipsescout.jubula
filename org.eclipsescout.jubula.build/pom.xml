@@ -12,13 +12,14 @@
 		<dbtool>${jubula.home}/jubula/dbtool.exe</dbtool>
 		<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
 		<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
-		<base.aut.url>http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/indigo/SR2/eclipse-java-indigo-SR2-win32.zip&amp;r=1</base.aut.url>
+				
+		<base.aut.url>http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/kepler/SR1/eclipse-standard-kepler-SR1-win32.zip&amp;r=1</base.aut.url>
 		<aut.home>C:\ci\Jubula\AUT</aut.home>
 
 		<scout-updatesite>http://download.eclipse.org/scout/nightly/3.9</scout-updatesite>
 		<staging>http://download.eclipse.org/releases/staging</staging>
 		<kepler>http://download.eclipse.org/releases/staging</kepler>
-		<jubula-updatesite>http://download.eclipse.org/releases/indigo</jubula-updatesite>
+		<jubula-updatesite>http://download.eclipse.org/releases/kepler</jubula-updatesite>
 		<tycho-version>0.18.0</tycho-version>
 		<sites>${scout-updatesite},${jubula-updatesite}</sites>
 		<features>org.eclipse.scout.feature.group,org.eclipse.jubula.rc.rcp</features>
