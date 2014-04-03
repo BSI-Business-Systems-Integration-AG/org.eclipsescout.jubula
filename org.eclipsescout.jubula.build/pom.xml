@@ -6,112 +6,77 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<jubula.home>C:\ci\Jubula\jubula_1.3.00071</jubula.home>
+		<jubula.home>C:\ci\Jubula\jubula_7.2.00092</jubula.home>
+		<aut.home>C:\ci\Jubula\AUT</aut.home>
 		<aut.agent.home>${jubula.home}/server</aut.agent.home>
 		<testexec>${jubula.home}\jubula\testexec.exe</testexec>
 		<dbtool>${jubula.home}/jubula/dbtool.exe</dbtool>
 		<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
 		<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
-				
-		<base.aut.url>http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/kepler/SR1/eclipse-standard-kepler-SR1-win32.zip&amp;r=1</base.aut.url>
-		<aut.home>C:\ci\Jubula\AUT</aut.home>
 
-		<scout-updatesite>http://download.eclipse.org/scout/nightly/3.9</scout-updatesite>
-		<staging>http://download.eclipse.org/releases/staging</staging>
-		<kepler>http://download.eclipse.org/releases/staging</kepler>
-		<jubula-updatesite>http://download.eclipse.org/releases/kepler</jubula-updatesite>
-		<tycho-version>0.18.0</tycho-version>
+<!-- 		<base.aut.url>http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/kepler/SR2/eclipse-standard-kepler-SR2-win32.zip&amp;r=1</base.aut.url> -->
+		<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-standard-luna-win32.zip</base.aut.url>
+		<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
+
+		<scout-updatesite>https://scout.bsiag.com/repository/eclipse.scout.nightly</scout-updatesite>
+		<jubula-updatesite>https://scout.bsiag.com/repository/eclipse.releases.luna</jubula-updatesite>
+		<tycho-version>0.20.0</tycho-version>
+
+		<!-- AUT update configuration -->
 		<sites>${scout-updatesite},${jubula-updatesite}</sites>
-		<features>org.eclipse.scout.feature.group,org.eclipse.jubula.rc.rcp</features>
+		<features>org.eclipse.scout.feature.group,org.eclipse.scout.rt.rap.target.feature.group,org.eclipse.jubula.rc.rcp</features>
 	</properties>
 
 	<build>
-	<plugins>
+		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-	            <artifactId>maven-clean-plugin</artifactId>
-	            <version>2.4.1</version>
+				<!-- Preparing Application under test: -->
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
 				<executions>
 					<execution>
-					    <id>cleanup</id>
-					    <phase>process-resources</phase>
-					    <goals>
-					        <goal>clean</goal>
-					    </goals>
-			            <configuration>
-	                    	<excludeDefaultDirectories>true</excludeDefaultDirectories>
-			                <filesets>
-			                    <fileset>
-			                        <directory>${aut.home}\eclipse</directory>
-			                        <followSymlinks>false</followSymlinks>
-			                    </fileset>
-			                </filesets>
-			            </configuration>
-			        </execution>
-			    </executions>
+						<id>Prepare application under test (AUT)</id>
+						<phase>compile</phase>
+
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo>Preparing AUT in ${aut.home}</echo>
+								<echo>Cleaning ${aut.home}</echo>
+								<delete dir="${aut.home}" />
+								<get src="${base.aut.url}" dest="${project.build.directory}/eclipse.zip"
+									usetimestamp="true" />
+								<unzip src="${project.build.directory}/eclipse.zip" dest="${aut.home}" />
+								<echo>Installing Features ${features} from ${sites}</echo>
+								<exec executable="${aut.home}\eclipse\eclipsec.exe" dir="${aut.home}\eclipse">
+									<arg value="-application" />
+									<arg value="org.eclipse.equinox.p2.director" />
+									<arg value="-nosplash" />
+									<arg value="-repository" />
+									<arg value="${sites}" />
+									<arg value="-installIUs" />
+									<arg value="${features}" />
+									<arg value="-vm" />
+									<arg value="${jubula.home}\jre\bin\javaw.exe" />
+								</exec>
+								<!-- Adding Jubula Plugin to started bundles -->
+								<replaceregexp byline="true"
+									file="${aut.home}/eclipse/configuration/config.ini" match="osgi.bundles=(.*)"
+									replace="osgi.bundles=reference\:file\:org.eclipse.equinox.simpleconfigurator_${simpleconfigurator.version}.jar@1\:start,org.eclipse.jubula.rc.rcp@start" />
+							</target>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
+
+			<!--Running Tests -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.2.1</version>
 				<executions>
-					<!-- add scout to eclipse  -->
-					<execution>
-						<id>Add Scout and Jubula Launcher to Eclipse</id>
-						<phase>process-classes</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>${aut.home}\eclipse\eclipsec.exe</executable>
-							<arguments>
-								<argument>-application</argument>
-								<argument>org.eclipse.equinox.p2.director</argument>
-								<argument>-nosplash</argument>
-								<argument>-repository</argument>
-								<argument>${sites}</argument>
-								<argument>-installIUs</argument>
-								<argument>${features}</argument>
-								<argument>-vm</argument>
-								<argument>${jubula.home}\jre\bin\client\jvm.dll</argument>
-							</arguments>
-							<workingDirectory>${aut.home}\eclipse</workingDirectory>
-						</configuration>
-					</execution>
-						
-<!-- 					<execution> -->
-<!-- 						<id>Delete Projects from DB</id> -->
-<!-- 						<phase>package</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>exec</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<executable>${dbtool}</executable> -->
-<!-- 							<arguments> -->
-<!-- 								<argument>-c</argument> -->
-<!-- 								<argument>${jubula.config}</argument> -->
-<!-- 								<argument>-deleteall</argument> -->
-<!-- 							</arguments> -->
-<!-- 							<workingDirectory>${jubula.home}/jubula/</workingDirectory> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 					<execution> -->
-<!-- 						<id>Importing XML into DB</id> -->
-<!-- 						<phase>pre-integration-test</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>exec</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<executable>${dbtool}</executable> -->
-<!-- 							<arguments> -->
-<!-- 								<argument>-c</argument> -->
-<!-- 								<argument>${jubula.config}</argument> -->
-<!-- 								<argument>-import</argument> -->
-<!-- 								<argument>${jubula.tests}</argument> -->
-<!-- 							</arguments> -->
-<!-- 							<workingDirectory>${jubula.home}/jubula/</workingDirectory> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
 					<execution>
 						<id>Running Jubula Tests</id>
 						<phase>integration-test</phase>
@@ -126,79 +91,39 @@
 							</arguments>
 						</configuration>
 					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.6</version>
-				<executions>
-<!-- 					<execution> -->
-<!-- 						<id>Start AUT Agent</id> -->
-<!-- 						<phase>pre-integration-test</phase> -->
-<!-- 						<configuration> -->
-<!-- 							<target> -->
-<!-- 								<exec executable="${aut.agent.home}/autagent.exe" spawn="true" /> -->
-<!-- 							</target> -->
-<!-- 						</configuration> -->
-<!-- 						<goals> -->
-<!-- 							<goal>run</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 					<execution> -->
-<!-- 						<id>Stop AUT Agent</id> -->
-<!-- 						<phase>post-integration-test</phase> -->
-<!-- 						<configuration> -->
-<!-- 							<target> -->
-<!-- 								<exec executable="${aut.agent.home}/stopautagent.exe" -->
-<!-- 									spawn="true" /> -->
-<!-- 							</target> -->
-<!-- 						</configuration> -->
-<!-- 						<goals> -->
-<!-- 							<goal>run</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-
-					<execution>
-						<id>download-files</id>
-						<phase>compile</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<get src="${base.aut.url}" dest="${project.build.directory}/eclipse.zip" usetimestamp="true" />
-								<unzip src="${project.build.directory}/eclipse.zip" dest="${aut.home}"/>
-							</target>
-						</configuration>
-					</execution>
-					
-<!-- 					<execution> -->
-<!-- 						<id>delete-old-eclipse</id> -->
-<!-- 						<phase>process-resources</phase> -->
-<!-- 	                    <configuration> -->
-<!-- 	                        <tasks> -->
-<!-- 	                            <delete dir="${ant.home}\eclipse"/> -->
-<!-- 	                        </tasks> -->
-<!-- 	                    </configuration> -->
-<!-- 	                    <goals> -->
-<!-- 	                        <goal>run</goal> -->
-<!-- 	                    </goals> -->
-<!-- 		            </execution> -->
-					
-<!-- 					<execution> -->
-<!-- 						<id>append plugin in simpleconfig of eclipse</id> -->
-<!-- 						<phase>generate-test-sources</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>run</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<target> -->
-<!-- 								<echo file="${aut.home}/Eclipse/configuration/org.eclipse.equinox.simpleconfigurator/bundles.info" append="true"></echo> -->
-<!-- 							</target> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-
+					<!-- <execution> -->
+					<!-- <id>Delete Projects from DB</id> -->
+					<!-- <phase>package</phase> -->
+					<!-- <goals> -->
+					<!-- <goal>exec</goal> -->
+					<!-- </goals> -->
+					<!-- <configuration> -->
+					<!-- <executable>${dbtool}</executable> -->
+					<!-- <arguments> -->
+					<!-- <argument>-c</argument> -->
+					<!-- <argument>${jubula.config}</argument> -->
+					<!-- <argument>-deleteall</argument> -->
+					<!-- </arguments> -->
+					<!-- <workingDirectory>${jubula.home}/jubula/</workingDirectory> -->
+					<!-- </configuration> -->
+					<!-- </execution> -->
+					<!-- <execution> -->
+					<!-- <id>Importing XML into DB</id> -->
+					<!-- <phase>pre-integration-test</phase> -->
+					<!-- <goals> -->
+					<!-- <goal>exec</goal> -->
+					<!-- </goals> -->
+					<!-- <configuration> -->
+					<!-- <executable>${dbtool}</executable> -->
+					<!-- <arguments> -->
+					<!-- <argument>-c</argument> -->
+					<!-- <argument>${jubula.config}</argument> -->
+					<!-- <argument>-import</argument> -->
+					<!-- <argument>${jubula.tests}</argument> -->
+					<!-- </arguments> -->
+					<!-- <workingDirectory>${jubula.home}/jubula/</workingDirectory> -->
+					<!-- </configuration> -->
+					<!-- </execution> -->
 				</executions>
 			</plugin>
 		</plugins>
