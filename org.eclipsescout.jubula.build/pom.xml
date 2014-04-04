@@ -21,7 +21,7 @@
 		<scout-updatesite>https://scout.bsiag.com/repository/eclipse.scout.nightly</scout-updatesite>
 		<jubula-updatesite>https://scout.bsiag.com/repository/eclipse.releases.luna</jubula-updatesite>
 		<tycho-version>0.20.0</tycho-version>
-		<aut.jre>C:\\ci\\jdk\\j2sdk1.7.0_51\\jre\\bin\\client\\jvm.dll</aut.jre>
+		<aut.jre>C:\ci\jdk\j2sdk1.7.0_51\jre\bin\client\jvm.dll</aut.jre>
 
 		<!-- AUT update configuration -->
 		<sites>${scout-updatesite},${jubula-updatesite}</sites>
