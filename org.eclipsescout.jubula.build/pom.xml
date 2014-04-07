@@ -14,19 +14,42 @@
 		<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
 		<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
 
-<!-- 		<base.aut.url>http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/kepler/SR2/eclipse-standard-kepler-SR2-win32.zip&amp;r=1</base.aut.url> -->
-		<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-standard-luna-win32.zip</base.aut.url>
-		<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
+		<!-- <base.aut.url>http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/kepler/SR2/eclipse-standard-kepler-SR2-win32.zip&amp;r=1</base.aut.url> -->
 
 		<scout-updatesite>https://scout.bsiag.com/repository/eclipse.scout.nightly</scout-updatesite>
-		<jubula-updatesite>https://scout.bsiag.com/repository/eclipse.releases.luna</jubula-updatesite>
+		<luna-updatesite>https://scout.bsiag.com/repository/eclipse.releases.luna</luna-updatesite>
+		<jubula-updatesite>file:///C:/ci/Jubula/updatesite/</jubula-updatesite>
 		<tycho-version>0.20.0</tycho-version>
-		<aut.jre>C:\ci\jdk\j2sdk1.7.0_51\jre\bin\client\jvm.dll</aut.jre>
 
 		<!-- AUT update configuration -->
-		<sites>${scout-updatesite},${jubula-updatesite}</sites>
-		<features>org.eclipse.scout.feature.group,org.eclipse.scout.rt.rap.target.feature.group,org.eclipse.jubula.rc.rcp</features>
+		<sites>${scout-updatesite},${luna-updatesite}</sites>
+		<features>org.eclipse.scout.feature.group,org.eclipse.scout.rt.rap.target.feature.group</features>
+
+		<!-- default config -->
+		<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-standard-luna-win32.zip</base.aut.url>
+		<aut.jre>C:\ci\jdk\j2sdk1.7.0_51\jre\bin\client\jvm.dll</aut.jre>
+		<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 	</properties>
+
+	<profiles>
+		<profile>
+			<id>win32_java7_luna_standard</id>
+			<properties>
+				<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-standard-luna-win32.zip</base.aut.url>
+				<aut.jre>C:\ci\jdk\j2sdk1.7.0_51\jre\bin\client\jvm.dll</aut.jre>
+				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
+			</properties>
+		</profile>
+		<profile>
+			<id>win32_java6_luna</id>
+			<properties>
+				<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-scout-luna-win32.zip</base.aut.url>
+				<aut.jre>C:\ci\jdk\j2sdk1.6.0_37\jre\bin\client\jvm.dll</aut.jre>
+				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
+			</properties>
+		</profile>
+	</profiles>
+
 
 	<build>
 		<plugins>
@@ -44,16 +67,32 @@
 						</goals>
 						<configuration>
 							<target>
-								<echo>Preparing AUT in ${aut.home}</echo>
+								<echo>Preparing AUT in ${aut.home} ${base.aut.url}</echo>
 								<echo>Cleaning ${aut.home}</echo>
 								<delete dir="${aut.home}" />
 								<get src="${base.aut.url}" dest="${project.build.directory}/eclipse.zip"
 									usetimestamp="true" />
 								<unzip src="${project.build.directory}/eclipse.zip" dest="${aut.home}" />
 								<!-- Adding Java version to eclipse.ini -->
-							    <replace file="${aut.home}/eclipse/eclipse.ini" token="-vmargs"
+								<echo>Adding Java to eclipse.ini: ${aut.jre}</echo>
+								<replace file="${aut.home}/eclipse/eclipse.ini" token="-vmargs"
 									value="-vm${line.separator}${aut.jre}${line.separator}-vmargs" />
-								<echo>Installing Features ${features} from ${sites}</echo>
+								<echo>Installing Jubula bundles ${features} from
+									${jubula-updatesite}</echo>
+								<exec executable="${aut.home}\eclipse\eclipsec.exe" dir="${aut.home}\eclipse">
+									<arg value="-application" />
+									<arg value="org.eclipse.equinox.p2.director" />
+									<arg value="-nosplash" />
+									<arg value="-repository" />
+									<arg value="${jubula-updatesite}" />
+									<arg value="-installIUs" />
+									<arg value="org.eclipse.jubula.rc.rcp" />
+								</exec>
+								<!-- Adding Jubula Plugin to started bundles -->
+								<replaceregexp byline="true"
+									file="${aut.home}/eclipse/configuration/config.ini" match="osgi.bundles=(.*)"
+									replace="osgi.bundles=reference\:file\:org.eclipse.equinox.simpleconfigurator_${simpleconfigurator.version}.jar@1\:start,org.eclipse.jubula.rc.rcp@start" />
+								<echo>Installing Scout Nighly</echo>
 								<exec executable="${aut.home}\eclipse\eclipsec.exe" dir="${aut.home}\eclipse">
 									<arg value="-application" />
 									<arg value="org.eclipse.equinox.p2.director" />
@@ -63,10 +102,6 @@
 									<arg value="-installIUs" />
 									<arg value="${features}" />
 								</exec>
-								<!-- Adding Jubula Plugin to started bundles -->
-								<replaceregexp byline="true"
-									file="${aut.home}/eclipse/configuration/config.ini" match="osgi.bundles=(.*)"
-									replace="osgi.bundles=reference\:file\:org.eclipse.equinox.simpleconfigurator_${simpleconfigurator.version}.jar@1\:start,org.eclipse.jubula.rc.rcp@start" />
 							</target>
 						</configuration>
 					</execution>
