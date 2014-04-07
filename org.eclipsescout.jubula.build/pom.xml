@@ -32,24 +32,66 @@
 	</properties>
 
 	<profiles>
+		<!-- eclipse package -->
 		<profile>
-			<id>win32_java7_luna_standard</id>
+			<id>luna_standard_win32</id>
 			<properties>
 				<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-standard-luna-win32.zip</base.aut.url>
-				<aut.jre>C:\ci\jdk\j2sdk1.7.0_51\jre\bin\client\jvm.dll</aut.jre>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 			</properties>
 		</profile>
 		<profile>
-			<id>win32_java6_luna</id>
+			<id>luna_epp_win32</id>
 			<properties>
 				<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-scout-luna-win32.zip</base.aut.url>
-				<aut.jre>C:\ci\jdk\j2sdk1.6.0_37\jre\bin\client\jvm.dll</aut.jre>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
+			</properties>
+		</profile>
+	    <profile>
+			<id>luna_epp_win64</id>
+			<properties>
+				<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-scout-luna-win64.zip</base.aut.url>
+				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
+			</properties>
+		</profile>
+		<!-- java -->
+		<profile>
+			<id>java6_32</id>
+			<properties>
+				<aut.jre>C:\ci\jdk\j2sdk1.6.0_37\jre\bin\client\jvm.dll</aut.jre>
+			</properties>
+		</profile>
+		<profile>
+			<id>java6_64</id>
+			<properties>
+				<aut.jre>C:\ci\jdk\j2sdk1.6.0_35_x64\jre\bin\server\jvm.dll</aut.jre>
+			</properties>
+		</profile>
+		<profile>
+			<id>java7_32</id>
+			<properties>
+				<aut.jre>C:\ci\jdk\j2sdk1.7.0_51\jre\bin\client\jvm.dll</aut.jre>
+			</properties>
+		</profile>
+		<profile>
+			<id>java7_64</id>
+			<properties>
+				<aut.jre>C:\ci\jdk\jdk1.7.0_51_x64\jre\bin\server\jvm.dll</aut.jre>
+			</properties>
+		</profile>
+		<profile>
+			<id>java8_32</id>
+			<properties>
+				<aut.jre>C:\ci\jdk\j2sdk1.8.0\jre\bin\client\jvm.dll</aut.jre>
+			</properties>
+		</profile>
+		<profile>
+			<id>java8_64</id>
+			<properties>
+				<aut.jre>C:\ci\jdk\j2sdk1.8.0_x64\jre\bin\server\jvm.dll</aut.jre>
 			</properties>
 		</profile>
 	</profiles>
-
 
 	<build>
 		<plugins>
@@ -77,7 +119,7 @@
 								<echo>Adding Java to eclipse.ini: ${aut.jre}</echo>
 								<replace file="${aut.home}/eclipse/eclipse.ini" token="-vmargs"
 									value="-vm${line.separator}${aut.jre}${line.separator}-vmargs" />
-								<echo>Installing Jubula bundles ${features} from
+								<echo>Installing Jubula bundle org.eclipse.jubula.rc.rcp from
 									${jubula-updatesite}</echo>
 								<exec executable="${aut.home}\eclipse\eclipsec.exe" dir="${aut.home}\eclipse">
 									<arg value="-application" />
