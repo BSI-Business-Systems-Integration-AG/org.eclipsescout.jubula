@@ -39,13 +39,71 @@
 				<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-standard-luna-win32.zip</base.aut.url>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<!-- Preparing Application under test: -->
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>Download and unzip application under test (AUT)</id>
+								<phase>process-resources</phase>
+		
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<echo>Preparing AUT in ${aut.home} ${base.aut.url}</echo>
+										<echo>Cleaning ${aut.home}</echo>
+										<delete dir="${aut.home}" />
+										<get src="${base.aut.url}" dest="${project.build.directory}/eclipse.zip"
+											usetimestamp="true" />
+										<unzip src="${project.build.directory}/eclipse.zip" dest="${aut.home}" />
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<profile>
 			<id>luna_epp_win32</id>
 			<properties>
-				<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-scout-luna-win32.zip</base.aut.url>
+				<base.aut.url>https://scout.bsiag.com/repository/org.eclipse.scout-snapshot-local/scout.epp/eclipse-scout-luna-rc2-win32.win32.x86.zip</base.aut.url>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<!-- Preparing Application under test: -->
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>Download and unzip application under test (AUT)</id>
+								<phase>process-resources</phase>
+		
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<echo>Preparing AUT in ${aut.home} ${base.aut.url}</echo>
+										<echo>Cleaning ${aut.home}</echo>
+										<delete dir="${aut.home}" />
+										<get src="${base.aut.url}" dest="${project.build.directory}/eclipse.zip"
+											usetimestamp="true" />
+										<unzip src="${project.build.directory}/eclipse.zip" dest="${aut.home}" />
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	    <profile>
 			<id>luna_epp_win64</id>
@@ -53,6 +111,72 @@
 				<base.aut.url>https://scout.bsiag.com/repository/org.eclipse.scout-snapshot-local/scout.epp/eclipse-scout-luna-rc2-win32.win32.x86_64.zip</base.aut.url>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<!-- Preparing Application under test: -->
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>Download and unzip application under test (AUT)</id>
+								<phase>process-resources</phase>
+		
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<echo>Preparing AUT in ${aut.home} ${base.aut.url}</echo>
+										<echo>Cleaning ${aut.home}</echo>
+										<delete dir="${aut.home}" />
+										<get src="${base.aut.url}" dest="${project.build.directory}/eclipse.zip"
+											usetimestamp="true" />
+										<unzip src="${project.build.directory}/eclipse.zip" dest="${aut.home}" />
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>luna_epp_linux64</id>
+			<properties>
+				<base.aut.url>https://scout.bsiag.com/repository/org.eclipse.scout-snapshot-local/scout.epp/eclipse-scout-luna-rc2-linux.gtk.x86_64.tar.gz</base.aut.url>
+				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<!-- Preparing Application under test: -->
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>Download, gunzip and untar application under test (AUT)</id>
+								<phase>process-resources</phase>
+		
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<echo>Preparing AUT in ${aut.home} ${base.aut.url}</echo>
+										<echo>Cleaning ${aut.home}</echo>
+										<delete dir="${aut.home}" />
+										<get src="${base.aut.url}" dest="${project.build.directory}/eclipse.tar.gz"
+											usetimestamp="true" />
+										<gunzip src="${project.build.directory}/eclipse.tar.gz" />
+										<untar src="${project.build.directory}/eclipse.tar" dest="${aut.home}" />
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<!-- java -->
 		<profile>
@@ -109,12 +233,6 @@
 						</goals>
 						<configuration>
 							<target>
-								<echo>Preparing AUT in ${aut.home} ${base.aut.url}</echo>
-								<echo>Cleaning ${aut.home}</echo>
-								<delete dir="${aut.home}" />
-								<get src="${base.aut.url}" dest="${project.build.directory}/eclipse.zip"
-									usetimestamp="true" />
-								<unzip src="${project.build.directory}/eclipse.zip" dest="${aut.home}" />
 								<!-- Adding Java version to eclipse.ini -->
 								<echo>Adding Java to eclipse.ini: ${aut.jre}</echo>
 								<replace file="${aut.home}/eclipse/eclipse.ini" token="-vmargs"
