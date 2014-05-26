@@ -9,8 +9,6 @@
 		<jubula.home>C:\ci\Jubula\jubula_7.2.00092</jubula.home>
 		<aut.home>C:\ci\Jubula\AUT</aut.home>
 		<aut.agent.home>${jubula.home}/server</aut.agent.home>
-		<testexec>${jubula.home}\jubula\testexec.exe</testexec>
-		<dbtool>${jubula.home}/jubula/dbtool.exe</dbtool>
 		<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
 		<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
 
@@ -27,8 +25,17 @@
 
 		<!-- default config -->
 		<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-standard-luna-win32.zip</base.aut.url>
-		<aut.jre>C:\ci\jdk\jdk1.7.0_55\jre\bin\client\jvm.dll</aut.jre>
+		<jdk-path>C:\ci\jdk</jdk-path>
+		<aut.jre>${jdk-path}\jdk1.7.0_55\jre\bin\client\jvm.dll</aut.jre>
 		<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
+		<eclipse.starter>eclipsec.exe</eclipse.starter>
+		<jubula.home>C:\ci\Jubula\jubula_7.2.00092</jubula.home>
+		<aut.home>C:\ci\Jubula\AUT</aut.home>
+		<aut.agent.home>${jubula.home}/server</aut.agent.home>
+		<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
+		<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
+		<testexec>${jubula.home}\jubula\testexec.exe</testexec>
+		<dbtool>${jubula.home}/jubula/dbtool.exe</dbtool>
 	</properties>
 
 	<profiles>
@@ -37,8 +44,16 @@
 			<id>luna_standard_win32</id>
 			<properties>
 				<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-standard-luna-win32.zip</base.aut.url>
+				<jdk-path>C:\ci\jdk</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipsec.exe</eclipse.starter>
+				<jubula.home>C:\ci\Jubula\jubula_7.2.00092</jubula.home>
+				<aut.home>C:\ci\Jubula\AUT</aut.home>
+				<aut.agent.home>${jubula.home}/server</aut.agent.home>
+				<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
+				<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
+				<testexec>${jubula.home}\jubula\testexec.exe</testexec>
+				<dbtool>${jubula.home}/jubula/dbtool.exe</dbtool>
 			</properties>
 			<build>
 				<plugins>
@@ -74,8 +89,16 @@
 			<id>luna_epp_win32</id>
 			<properties>
 				<base.aut.url>https://scout.bsiag.com/repository/org.eclipse.scout-snapshot-local/scout.epp/eclipse-scout-luna-rc2-win32.win32.x86.zip</base.aut.url>
+				<jdk-path>C:\ci\jdk</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipsec.exe</eclipse.starter>
+				<jubula.home>C:\ci\Jubula\jubula_7.2.00092</jubula.home>
+				<aut.home>C:\ci\Jubula\AUT</aut.home>
+				<aut.agent.home>${jubula.home}/server</aut.agent.home>
+				<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
+				<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
+				<testexec>${jubula.home}\jubula\testexec.exe</testexec>
+				<dbtool>${jubula.home}/jubula/dbtool.exe</dbtool>
 			</properties>
 			<build>
 				<plugins>
@@ -111,8 +134,16 @@
 			<id>luna_epp_win64</id>
 			<properties>
 				<base.aut.url>https://scout.bsiag.com/repository/org.eclipse.scout-snapshot-local/scout.epp/eclipse-scout-luna-rc2-win32.win32.x86_64.zip</base.aut.url>
+				<jdk-path>C:\ci\jdk</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipsec.exe</eclipse.starter>
+				<jubula.home>C:\ci\Jubula\jubula_7.2.00092</jubula.home>
+				<aut.home>C:\ci\Jubula\AUT</aut.home>
+				<aut.agent.home>${jubula.home}/server</aut.agent.home>
+				<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
+				<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
+				<testexec>${jubula.home}\jubula\testexec.exe</testexec>
+				<dbtool>${jubula.home}/jubula/dbtool.exe</dbtool>
 			</properties>
 			<build>
 				<plugins>
@@ -148,8 +179,16 @@
 			<id>luna_epp_linux64</id>
 			<properties>
 				<base.aut.url>https://scout.bsiag.com/repository/org.eclipse.scout-snapshot-local/scout.epp/eclipse-scout-luna-rc2-linux.gtk.x86_64.tar.gz</base.aut.url>
+				<jdk-path>/home/bsi</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipse</eclipse.starter>
+				<jubula.home>/home/bsi/ci/Jubula/jubula_7.2.00092</jubula.home>
+				<aut.home>/home/bsi/ci/Jubula/AUT</aut.home>
+				<aut.agent.home>${jubula.home}/server</aut.agent.home>
+				<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
+				<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
+				<testexec>${jubula.home}/jubula/testexec</testexec>
+				<dbtool>${jubula.home}/jubula/dbtool</dbtool>
 			</properties>
 			<build>
 				<plugins>
@@ -186,37 +225,37 @@
 		<profile>
 			<id>java6_32</id>
 			<properties>
-				<aut.jre>C:\ci\jdk\j2sdk1.6.0_37\jre\bin\client\jvm.dll</aut.jre>
+				<aut.jre>${jdk-path}/j2sdk1.6.0_37/jre/bin/client/jvm.dll</aut.jre>
 			</properties>
 		</profile>
 		<profile>
 			<id>java6_64</id>
 			<properties>
-				<aut.jre>C:\ci\jdk\j2sdk1.6.0_35_x64\jre\bin\server\jvm.dll</aut.jre>
+				<aut.jre>${jdk-path}/j2sdk1.6.0_35_x64/jre/bin/server/jvm.dll</aut.jre>
 			</properties>
 		</profile>
 		<profile>
 			<id>java7_32</id>
 			<properties>
-				<aut.jre>C:\ci\jdk\jdk1.7.0_55\jre\bin\client\jvm.dll</aut.jre>
+				<aut.jre>${jdk-path}/jdk1.7.0_55/jre/bin/client/jvm.dll</aut.jre>
 			</properties>
 		</profile>
 		<profile>
 			<id>java7_64</id>
 			<properties>
-				<aut.jre>C:\ci\jdk\jdk1.7.0_55_x64\jre\bin\server\jvm.dll</aut.jre>
+				<aut.jre>${jdk-path}/jdk1.7.0_55_x64/jre/bin/server/jvm.dll</aut.jre>
 			</properties>
 		</profile>
 		<profile>
 			<id>java8_32</id>
 			<properties>
-				<aut.jre>C:\ci\jdk\jdk1.8.0_05\jre\bin\client\jvm.dll</aut.jre>
+				<aut.jre>${jdk-path}/jdk1.8.0_05/jre/bin/client/jvm.dll</aut.jre>
 			</properties>
 		</profile>
 		<profile>
 			<id>java8_64</id>
 			<properties>
-				<aut.jre>C:\ci\jdk\jdk1.8.0_05_x64\jre\bin\server\jvm.dll</aut.jre>
+				<aut.jre>${jdk-path}/jdk1.8.0_05_x64/jre/bin/server/jvm.dll</aut.jre>
 			</properties>
 		</profile>
 	</profiles>
@@ -243,7 +282,7 @@
 									value="-vm${line.separator}${aut.jre}${line.separator}-vmargs" />
 								<echo>Installing Jubula bundle org.eclipse.jubula.rc.rcp from
 									${jubula-updatesite}</echo>
-								<exec executable="${aut.home}\eclipse\${eclipse.starter}" dir="${aut.home}\eclipse">
+								<exec executable="${aut.home}/eclipse/${eclipse.starter}" dir="${aut.home}/eclipse">
 									<arg value="-application" />
 									<arg value="org.eclipse.equinox.p2.director" />
 									<arg value="-nosplash" />
@@ -257,7 +296,7 @@
 									file="${aut.home}/eclipse/configuration/config.ini" match="osgi.bundles=(.*)"
 									replace="osgi.bundles=reference\:file\:org.eclipse.equinox.simpleconfigurator_${simpleconfigurator.version}.jar@1\:start,org.eclipse.jubula.rc.rcp@start" />
 								<echo>Installing Scout Nighly</echo>
-								<exec executable="${aut.home}\eclipse\${eclipse.starter}" dir="${aut.home}\eclipse">
+								<exec executable="${aut.home}/eclipse/${eclipse.starter}" dir="${aut.home}/eclipse">
 									<arg value="-application" />
 									<arg value="org.eclipse.equinox.p2.director" />
 									<arg value="-nosplash" />
