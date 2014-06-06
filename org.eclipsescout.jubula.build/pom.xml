@@ -33,6 +33,13 @@
 		
 		<testexec>${jubula.home}\jubula\testexec.exe</testexec>
 		<dbtool>${jubula.home}/jubula/dbtool.exe</dbtool>
+		
+		<java6_32>j2sdk1.6.0_37</java6_32>
+		<java6_64>j2sdk1.6.0_35_x64</java6_64>
+		<java7_32>jdk1.7.0_55</java7_32>
+		<java7_64>jdk1.7.0_55_x64</java7_64>
+		<java8_32>jdk1.8.0_05</java8_32>
+		<java8_64>jdk1.8.0_05_x64</java8_64>
 	</properties>
 
 	<profiles>
@@ -54,6 +61,13 @@
 				
 				<testexec>${jubula.home}\jubula\testexec.exe</testexec>
 				<dbtool>${jubula.home}/jubula/dbtool.exe</dbtool>
+				
+				<java6_32>j2sdk1.6.0_37</java6_32>
+				<java6_64>j2sdk1.6.0_35_x64</java6_64>
+				<java7_32>jdk1.7.0_55</java7_32>
+				<java7_64>jdk1.7.0_55_x64</java7_64>
+				<java8_32>jdk1.8.0_05</java8_32>
+				<java8_64>jdk1.8.0_05_x64</java8_64>
 			</properties>
 			<build>
 				<plugins>
@@ -102,6 +116,13 @@
 				
 				<testexec>${jubula.home}\jubula\testexec.exe</testexec>
 				<dbtool>${jubula.home}/jubula/dbtool.exe</dbtool>
+				
+				<java6_32>j2sdk1.6.0_37</java6_32>
+				<java6_64>j2sdk1.6.0_35_x64</java6_64>
+				<java7_32>jdk1.7.0_55</java7_32>
+				<java7_64>jdk1.7.0_55_x64</java7_64>
+				<java8_32>jdk1.8.0_05</java8_32>
+				<java8_64>jdk1.8.0_05_x64</java8_64>
 			</properties>
 			<build>
 				<plugins>
@@ -150,6 +171,13 @@
 				<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
 				<testexec>${jubula.home}\jubula\testexec.exe</testexec>
 				<dbtool>${jubula.home}/jubula/dbtool.exe</dbtool>
+				
+				<java6_32>j2sdk1.6.0_37</java6_32>
+				<java6_64>j2sdk1.6.0_35_x64</java6_64>
+				<java7_32>jdk1.7.0_55</java7_32>
+				<java7_64>jdk1.7.0_55_x64</java7_64>
+				<java8_32>jdk1.8.0_05</java8_32>
+				<java8_64>jdk1.8.0_05_x64</java8_64>
 			</properties>
 			<build>
 				<plugins>
@@ -198,6 +226,13 @@
 				
 				<testexec>${jubula.home}/jubula/testexec</testexec>
 				<dbtool>${jubula.home}/jubula/dbtool</dbtool>
+				
+				<java6_32>jdk1.6.0_34</java6_32>
+				<java6_64>jdk1.6.0_34</java6_64>
+				<java7_32>jdk1.7.0_55</java7_32>
+				<java7_64>jdk1.7.0_55</java7_64>
+				<java8_32>jdk1.8.0_05</java8_32>
+				<java8_64>jdk1.8.0_05</java8_64>
 			</properties>
 			<build>
 				<plugins>
@@ -235,37 +270,37 @@
 		<profile>
 			<id>java6_32</id>
 			<properties>
-				<aut.jre>${jdk-path}/j2sdk1.6.0_37/jre/bin/client/jvm.dll</aut.jre>
+				<aut.jre>${jdk-path}/${java6_32}/jre/bin/client/jvm.dll</aut.jre>
 			</properties>
 		</profile>
 		<profile>
 			<id>java6_64</id>
 			<properties>
-				<aut.jre>${jdk-path}/j2sdk1.6.0_35_x64/jre/bin/server/jvm.dll</aut.jre>
+				<aut.jre>${jdk-path}/${java6_64}/jre/bin/server/jvm.dll</aut.jre>
 			</properties>
 		</profile>
 		<profile>
 			<id>java7_32</id>
 			<properties>
-				<aut.jre>${jdk-path}/jdk1.7.0_55/jre/bin/client/jvm.dll</aut.jre>
+				<aut.jre>${jdk-path}/${java7_32}/jre/bin/client/jvm.dll</aut.jre>
 			</properties>
 		</profile>
 		<profile>
 			<id>java7_64</id>
 			<properties>
-				<aut.jre>${jdk-path}/jdk1.7.0_55_x64/jre/bin/server/jvm.dll</aut.jre>
+				<aut.jre>${jdk-path}/${java7_64}/jre/bin/server/jvm.dll</aut.jre>
 			</properties>
 		</profile>
 		<profile>
 			<id>java8_32</id>
 			<properties>
-				<aut.jre>${jdk-path}/jdk1.8.0_05/jre/bin/client/jvm.dll</aut.jre>
+				<aut.jre>${jdk-path}/${java8_32}/jre/bin/client/jvm.dll</aut.jre>
 			</properties>
 		</profile>
 		<profile>
 			<id>java8_64</id>
 			<properties>
-				<aut.jre>${jdk-path}/jdk1.8.0_05_x64/jre/bin/server/jvm.dll</aut.jre>
+				<aut.jre>${jdk-path}/${java8_64}/jre/bin/server/jvm.dll</aut.jre>
 			</properties>
 		</profile>
 	</profiles>
