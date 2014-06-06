@@ -222,7 +222,7 @@
 											usetimestamp="true" />
 										<gunzip src="${project.build.directory}/eclipse.tar.gz" />
 										<untar src="${project.build.directory}/eclipse.tar" dest="${aut.home}" />
-										<chmod file="${aut.home}/${eclipse.starter}" perm="755" />
+										<chmod file="${aut.home}/eclipse/${eclipse.starter}" perm="755" />
 									</target>
 								</configuration>
 							</execution>
