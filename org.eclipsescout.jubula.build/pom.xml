@@ -12,6 +12,7 @@
 		<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
 		<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
 
+		<base.aut.url.base>https://scout.bsiag.com/repository/org.eclipse.scout-snapshot-local/scout.epp</base.aut.url.base>
 		<!-- <base.aut.url>http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/kepler/SR2/eclipse-standard-kepler-SR2-win32.zip&amp;r=1</base.aut.url> -->
 
 		<scout-updatesite>https://scout.bsiag.com/repository/eclipse.scout.nightly</scout-updatesite>
@@ -88,7 +89,7 @@
 		<profile>
 			<id>luna_epp_win32</id>
 			<properties>
-				<base.aut.url>https://scout.bsiag.com/repository/org.eclipse.scout-snapshot-local/scout.epp/eclipse-scout-luna-rc2-win32.win32.x86.zip</base.aut.url>
+				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-win32.win32.x86.zip</base.aut.url>
 				<jdk-path>C:\ci\jdk</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipsec.exe</eclipse.starter>
@@ -133,7 +134,7 @@
 	    <profile>
 			<id>luna_epp_win64</id>
 			<properties>
-				<base.aut.url>https://scout.bsiag.com/repository/org.eclipse.scout-snapshot-local/scout.epp/eclipse-scout-luna-rc2-win32.win32.x86_64.zip</base.aut.url>
+				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-win32.win32.x86_64.zip</base.aut.url>
 				<jdk-path>C:\ci\jdk</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipsec.exe</eclipse.starter>
@@ -178,12 +179,12 @@
 		<profile>
 			<id>luna_epp_linux64</id>
 			<properties>
-				<base.aut.url>https://scout.bsiag.com/repository/org.eclipse.scout-snapshot-local/scout.epp/eclipse-scout-luna-rc2-linux.gtk.x86_64.tar.gz</base.aut.url>
-				<jdk-path>/home/bsi</jdk-path>
+				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-linux.gtk.x86_64.tar.gz</base.aut.url>
+				<jdk-path>/home/bsi/jdk/</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipse</eclipse.starter>
-				<jubula.home>/home/bsi/ci/Jubula/jubula_7.2.00092</jubula.home>
-				<aut.home>/home/bsi/ci/Jubula/AUT</aut.home>
+				<jubula.home>/home/bsi/jubula/jubula</jubula.home>
+				<aut.home>/home/bsi/jubula/AUT</aut.home>
 				<aut.agent.home>${jubula.home}/server</aut.agent.home>
 				<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
 				<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
