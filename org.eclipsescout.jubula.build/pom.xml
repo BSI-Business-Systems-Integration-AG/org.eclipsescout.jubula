@@ -185,7 +185,7 @@
 			<id>luna_epp_linux64</id>
 			<properties>
 				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-linux.gtk.x86_64.tar.gz</base.aut.url>
-				<jdk-path>/home/bsi/jdk/</jdk-path>
+				<jdk-path>/home/bsi/jdk</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipse</eclipse.starter>
 				<jubula.home>/home/bsi/jubula/jubula</jubula.home>
@@ -222,6 +222,7 @@
 											usetimestamp="true" />
 										<gunzip src="${project.build.directory}/eclipse.tar.gz" />
 										<untar src="${project.build.directory}/eclipse.tar" dest="${aut.home}" />
+										<chmod file="${aut.home}/${eclipse.starter}" perm="755" />
 									</target>
 								</configuration>
 							</execution>
