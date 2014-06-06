@@ -227,12 +227,12 @@
 				<testexec>${jubula.home}/jubula/testexec</testexec>
 				<dbtool>${jubula.home}/jubula/dbtool</dbtool>
 				
-				<java6_32>jdk1.6.0_34/lib/amd64/server/libjvm.so</java6_32>
-				<java6_64>jdk1.6.0_34/lib/amd64/server/libjvm.so</java6_64>
-				<java7_32>jdk1.7.0_55/lib/amd64/server/libjvm.so</java7_32>
-				<java7_64>jdk1.7.0_55/lib/amd64/server/libjvm.so</java7_64>
-				<java8_32>jdk1.8.0_05/lib/amd64/server/libjvm.so</java8_32>
-				<java8_64>jdk1.8.0_05/lib/amd64/server/libjvm.so</java8_64>
+				<java6_32>jdk1.6.0_34/jre/lib/amd64/server/libjvm.so</java6_32>
+				<java6_64>jdk1.6.0_34/jre/lib/amd64/server/libjvm.so</java6_64>
+				<java7_32>jdk1.7.0_55/jre/lib/amd64/server/libjvm.so</java7_32>
+				<java7_64>jdk1.7.0_55/jre/lib/amd64/server/libjvm.so</java7_64>
+				<java8_32>jdk1.8.0_05/jre/lib/amd64/server/libjvm.so</java8_32>
+				<java8_64>jdk1.8.0_05/jre/lib/amd64/server/libjvm.so</java8_64>
 			</properties>
 			<build>
 				<plugins>
