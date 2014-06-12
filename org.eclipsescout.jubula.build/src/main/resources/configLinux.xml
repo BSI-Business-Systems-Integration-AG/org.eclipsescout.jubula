@@ -4,7 +4,7 @@
 <configuration>
     <project>ScoutIntegrationTests</project>
     <version>1.0</version>
-    <dburl>jdbc:h2:C:/ci/Jubula/database/database</dburl>
+    <dburl>jdbc:h2:/home/bsi/jubula/database/database</dburl>
 	<dbscheme>Default Embedded (H2)</dbscheme>
     <dbuser>sa</dbuser>
     <dbpw></dbpw>
