@@ -219,7 +219,7 @@
 				<jubula.home>/home/bsi/jubula/jubula</jubula.home>
 				<aut.home>/home/bsi/jubula/AUT</aut.home>
 				<aut.agent.home>${jubula.home}/server</aut.agent.home>
-				<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
+				<jubula.config>${project.basedir}/src/main/resources/configLinux.xml</jubula.config>
 				<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
 				
 				<jubula-updatesite>file:////home/bsi/jubula/updatesite/</jubula-updatesite>
