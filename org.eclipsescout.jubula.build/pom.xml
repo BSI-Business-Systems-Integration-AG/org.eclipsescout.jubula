@@ -279,7 +279,8 @@
 									<arguments>
 										<argument>-c</argument>
 										<argument>${jubula.config}</argument>
-										<argument>-deleteall</argument>
+										<argument>-delete</argument>
+										<argument>ScoutIntegrationTests</argument>
 									</arguments>
 									<workingDirectory>${jubula.home}/jubula/</workingDirectory>
 								</configuration>
