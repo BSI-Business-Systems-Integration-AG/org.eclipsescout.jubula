@@ -281,6 +281,7 @@
 										<argument>${jubula.config}</argument>
 										<argument>-delete</argument>
 										<argument>ScoutIntegrationTests</argument>
+										<argument>1.0</argument>
 									</arguments>
 									<workingDirectory>${jubula.home}/jubula/</workingDirectory>
 								</configuration>
