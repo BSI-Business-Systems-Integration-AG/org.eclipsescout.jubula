@@ -23,7 +23,7 @@
 		<aut.jre>${jdk-path}\jdk1.7.0_55\jre\bin\client\jvm.dll</aut.jre>
 		<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 		<eclipse.starter>eclipsec.exe</eclipse.starter>
-		<jubula.home>C:\ci\Jubula\jubula_7.2.00092</jubula.home>
+		<jubula.home>C:\ci\Jubula\jubula_8.0.00170</jubula.home>
 		<aut.home>C:\ci\Jubula\AUT</aut.home>
 		<aut.agent.home>${jubula.home}/server</aut.agent.home>
 		<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
@@ -51,7 +51,7 @@
 				<jdk-path>C:\ci\jdk</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipsec.exe</eclipse.starter>
-				<jubula.home>C:\ci\Jubula\jubula_7.2.00092</jubula.home>
+				<jubula.home>C:\ci\Jubula\jubula_8.0.00170</jubula.home>
 				<aut.home>C:\ci\Jubula\AUT</aut.home>
 				<aut.agent.home>${jubula.home}/server</aut.agent.home>
 				<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
@@ -106,7 +106,7 @@
 				<jdk-path>C:\ci\jdk</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipsec.exe</eclipse.starter>
-				<jubula.home>C:\ci\Jubula\jubula_7.2.00092</jubula.home>
+				<jubula.home>C:\ci\Jubula\jubula_8.0.00170</jubula.home>
 				<aut.home>C:\ci\Jubula\AUT</aut.home>
 				<aut.agent.home>${jubula.home}/server</aut.agent.home>
 				<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
@@ -161,7 +161,7 @@
 				<jdk-path>C:\ci\jdk</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipsec.exe</eclipse.starter>
-				<jubula.home>C:\ci\Jubula\jubula_7.2.00092</jubula.home>
+				<jubula.home>C:\ci\Jubula\jubula_8.0.00170</jubula.home>
 				<aut.home>C:\ci\Jubula\AUT</aut.home>
 				<aut.agent.home>${jubula.home}/server</aut.agent.home>
 				<jubula.config>${project.basedir}/src/main/resources/config.xml</jubula.config>
@@ -259,48 +259,6 @@
 										<untar src="${project.build.directory}/eclipse.tar" dest="${aut.home}" />
 										<chmod file="${aut.home}/eclipse/${eclipse.starter}" perm="755" />
 									</target>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>exec-maven-plugin</artifactId>
-						<version>1.2.1</version>
-						<executions>
-							<execution>
-								<id>Delete Projects from DB</id>
-								<phase>package</phase>
-								<goals>
-									<goal>exec</goal>
-								</goals>
-								<configuration>
-									<executable>${dbtool}</executable>
-									<arguments>
-										<argument>-c</argument>
-										<argument>${jubula.config}</argument>
-										<argument>-delete</argument>
-										<argument>ScoutIntegrationTests</argument>
-										<argument>1.0</argument>
-									</arguments>
-									<workingDirectory>${jubula.home}/jubula/</workingDirectory>
-								</configuration>
-							</execution>
-							<execution>
-								<id>Importing XML into DB</id>
-								<phase>pre-integration-test</phase>
-								<goals>
-									<goal>exec</goal>
-								</goals>
-								<configuration>
-									<executable>${dbtool}</executable>
-									<arguments>
-										<argument>-c</argument>
-										<argument>${jubula.config}</argument>
-										<argument>-import</argument>
-										<argument>${jubula.tests}</argument>
-									</arguments>
-									<workingDirectory>${jubula.home}/jubula/</workingDirectory>
 								</configuration>
 							</execution>
 						</executions>
@@ -418,39 +376,41 @@
 							</arguments>
 						</configuration>
 					</execution>
-					<!-- <execution> -->
-					<!-- <id>Delete Projects from DB</id> -->
-					<!-- <phase>package</phase> -->
-					<!-- <goals> -->
-					<!-- <goal>exec</goal> -->
-					<!-- </goals> -->
-					<!-- <configuration> -->
-					<!-- <executable>${dbtool}</executable> -->
-					<!-- <arguments> -->
-					<!-- <argument>-c</argument> -->
-					<!-- <argument>${jubula.config}</argument> -->
-					<!-- <argument>-deleteall</argument> -->
-					<!-- </arguments> -->
-					<!-- <workingDirectory>${jubula.home}/jubula/</workingDirectory> -->
-					<!-- </configuration> -->
-					<!-- </execution> -->
-					<!-- <execution> -->
-					<!-- <id>Importing XML into DB</id> -->
-					<!-- <phase>pre-integration-test</phase> -->
-					<!-- <goals> -->
-					<!-- <goal>exec</goal> -->
-					<!-- </goals> -->
-					<!-- <configuration> -->
-					<!-- <executable>${dbtool}</executable> -->
-					<!-- <arguments> -->
-					<!-- <argument>-c</argument> -->
-					<!-- <argument>${jubula.config}</argument> -->
-					<!-- <argument>-import</argument> -->
-					<!-- <argument>${jubula.tests}</argument> -->
-					<!-- </arguments> -->
-					<!-- <workingDirectory>${jubula.home}/jubula/</workingDirectory> -->
-					<!-- </configuration> -->
-					<!-- </execution> -->
+					<execution>
+						<id>Delete Projects from DB</id>
+						<phase>package</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${dbtool}</executable>
+							<arguments>
+								<argument>-c</argument>
+								<argument>${jubula.config}</argument>
+								<argument>-delete</argument>
+								<argument>ScoutIntegrationTests</argument>
+								<argument>1.0</argument>
+							</arguments>
+							<workingDirectory>${jubula.home}/jubula/</workingDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>Importing XML into DB</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${dbtool}</executable>
+							<arguments>
+								<argument>-c</argument>
+								<argument>${jubula.config}</argument>
+								<argument>-import</argument>
+								<argument>${jubula.tests}</argument>
+							</arguments>
+							<workingDirectory>${jubula.home}/jubula/</workingDirectory>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
