@@ -227,11 +227,11 @@
 				<testexec>${jubula.home}/jubula/testexec</testexec>
 				<dbtool>${jubula.home}/jubula/dbtool</dbtool>
 				
-				<java6_32>jdk1.6.0_34/jre/lib/amd64/server/libjvm.so</java6_32>
+				<java6_32>jdk1.6.0_34/jre/lib/amd64/client/libjvm.so</java6_32>
 				<java6_64>jdk1.6.0_34/jre/lib/amd64/server/libjvm.so</java6_64>
-				<java7_32>jdk1.7.0_55/jre/lib/amd64/server/libjvm.so</java7_32>
+				<java7_32>jdk1.7.0_55_x86/jre/lib/i386/client/libjvm.so</java7_32>
 				<java7_64>jdk1.7.0_55/jre/lib/amd64/server/libjvm.so</java7_64>
-				<java8_32>jdk1.8.0_05/jre/lib/amd64/server/libjvm.so</java8_32>
+				<java8_32>jdk1.8.0_05_x86/jre/lib/i386/client/libjvm.so</java8_32>
 				<java8_64>jdk1.8.0_05/jre/lib/amd64/server/libjvm.so</java8_64>
 			</properties>
 			<build>
@@ -259,6 +259,39 @@
 										<untar src="${project.build.directory}/eclipse.tar" dest="${aut.home}" />
 										<chmod file="${aut.home}/eclipse/${eclipse.starter}" perm="755" />
 									</target>
+								</configuration>
+							</execution>
+							<execution>
+								<id>Delete Projects from DB</id>
+								<phase>package</phase>
+								<goals>
+									<goal>exec</goal>
+								</goals>
+								<configuration>
+									<executable>${dbtool}</executable>
+									<arguments>
+										<argument>-c</argument>
+										<argument>${jubula.config}</argument>
+										<argument>-deleteall</argument>
+									</arguments>
+									<workingDirectory>${jubula.home}/jubula/</workingDirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>Importing XML into DB</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>exec</goal>
+								</goals>
+								<configuration>
+									<executable>${dbtool}</executable>
+									<arguments>
+										<argument>-c</argument>
+										<argument>${jubula.config}</argument>
+										<argument>-import</argument>
+										<argument>${jubula.tests}</argument>
+									</arguments>
+									<workingDirectory>${jubula.home}/jubula/</workingDirectory>
 								</configuration>
 							</execution>
 						</executions>
