@@ -8,7 +8,7 @@
 	<dbscheme>Default Embedded (H2)</dbscheme>
     <dbuser>sa</dbuser>
     <dbpw></dbpw>
-    <autconfig>EclipseKeplerAUT@localhost</autconfig>
+    <autconfig>EclipseKeplerAUT@localhost_linux</autconfig>
     <server>localhost</server>
     <port>60000</port>
     <language>de_DE</language>
