@@ -1,0 +1,18 @@
+<!--
+    Configuration for Eclipse Scout SDK Functional Tests
+ -->
+<configuration>
+    <project>ScoutIntegrationTests</project>
+    <version>1.0</version>
+    <dburl>jdbc:h2:~/.jubula/database/embedded;MVCC=TRUE;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE</dburl>
+	<dbscheme>Default Embedded (H2)</dbscheme>
+    <dbuser>sa</dbuser>
+    <dbpw></dbpw>
+    <autconfig>EclipseKeplerAUT@localhost_mac</autconfig>
+    <server>localhost</server>
+    <port>60000</port>
+    <language>de_DE</language>
+    <testsuite>PRODUCTIVE</testsuite>
+    <datadir>.</datadir>
+    <resultdir>./target</resultdir>
+</configuration>

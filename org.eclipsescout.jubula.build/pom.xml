@@ -323,6 +323,63 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<id>luna_epp_mac64</id>
+			<properties>
+				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-mac.gtk.x86.tar.gz</base.aut.url>
+				<jdk-path>/Users/bsi/slave/java</jdk-path>
+				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
+				<eclipse.starter>eclipse</eclipse.starter>
+				<jubula.home>/Users/bsi/jubula_8.0.00170</jubula.home>
+				<aut.home>/Users/bsi/jubula_8.0.00170/AUT</aut.home>
+				<aut.agent.home>${jubula.home}/server</aut.agent.home>
+				<jubula.config>${project.basedir}/src/main/resources/configMac.xml</jubula.config>
+				<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
+				
+				<jubula-updatesite>file:////home/bsi/jubula/updatesite/</jubula-updatesite>
+				
+				<testexec>${jubula.home}/jubula/testexec</testexec>
+				<dbtool>${jubula.home}/jubula/dbtool</dbtool>
+				
+				<java6_32>jre1.7.0_65.jre/Contents/Home/lib/server/libjvm.dylib</java6_32>
+				<java6_64>jre1.7.0_65.jre/Contents/Home/lib/server/libjvm.dylib</java6_64>
+				<java7_32>jre1.7.0_65.jre/Contents/Home/lib/server/libjvm.dylib</java7_32>
+				<java7_64>jre1.7.0_65.jre/Contents/Home/lib/server/libjvm.dylib</java7_64>
+				<java8_32>jre1.8.0_11.jre/Contents/Home/lib/server/libjvm.dylib</java8_32>
+				<java8_64>jre1.8.0_11.jre/Contents/Home/lib/server/libjvm.dylib</java8_64>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<!-- Preparing Application under test: -->
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>Download, gunzip and untar application under test (AUT)</id>
+								<phase>process-resources</phase>
+		
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<echo>Preparing AUT in ${aut.home} ${base.aut.url}</echo>
+										<echo>Cleaning ${aut.home}</echo>
+										<delete dir="${aut.home}" />
+										<get src="${base.aut.url}" dest="${project.build.directory}/eclipse.tar.gz"
+											usetimestamp="true" />
+										<gunzip src="${project.build.directory}/eclipse.tar.gz" />
+										<untar src="${project.build.directory}/eclipse.tar" dest="${aut.home}" />
+										<chmod file="${aut.home}/eclipse/${eclipse.starter}" perm="755" />
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<!-- java -->
 		<profile>
 			<id>java6_32</id>
