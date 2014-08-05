@@ -326,7 +326,7 @@
 		<profile>
 			<id>luna_epp_mac64</id>
 			<properties>
-				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-mac.gtk.x86.tar.gz</base.aut.url>
+				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-macosx.cocoa.x86_64.tar.gz</base.aut.url>
 				<jdk-path>/Users/bsi/slave/java</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipse</eclipse.starter>
