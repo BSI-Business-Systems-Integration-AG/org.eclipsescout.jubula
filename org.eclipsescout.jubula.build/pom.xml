@@ -348,7 +348,7 @@
 				<jubula.config>${project.basedir}/src/main/resources/configMac.xml</jubula.config>
 				<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
 				
-				<jubula-updatesite>file:////home/bsi/jubula/updatesite/</jubula-updatesite>
+				<jubula-updatesite>file:////Users/bsi/jubula_8.0.00170/updatesite/</jubula-updatesite>
 				
 				<testexec>${jubula.home}/jubula/testexec</testexec>
 				<dbtool>${jubula.home}/jubula/dbtool</dbtool>
