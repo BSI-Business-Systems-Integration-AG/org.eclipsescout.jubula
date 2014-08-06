@@ -342,7 +342,7 @@
 				<jdk-path>/Users/bsi/slave/java</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipse</eclipse.starter>
-				<jubula.home>/Users/bsi/jubula_8.0.00170</jubula.home>
+				<jubula.home>/Users/bsi/jubula_8.0.00170/jubula</jubula.home>
 				<aut.home>/Users/bsi/jubula_8.0.00170/AUT</aut.home>
 				<aut.agent.home>${jubula.home}/server</aut.agent.home>
 				<jubula.config>${project.basedir}/src/main/resources/configMac.xml</jubula.config>
