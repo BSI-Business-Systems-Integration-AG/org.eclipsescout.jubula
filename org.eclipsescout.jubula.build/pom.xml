@@ -40,6 +40,8 @@
 		<java7_64>jdk1.7.0_55_x64\jre\bin\server\jvm.dll</java7_64>
 		<java8_32>jdk1.8.0_05\jre\bin\client\jvm.dll</java8_32>
 		<java8_64>jdk1.8.0_05_x64\jre\bin\server\jvm.dll</java8_64>
+				
+		<eclipse.ini.path>${aut.home}/eclipse/eclipse.ini</eclipse.ini.path>
 	</properties>
 
 	<profiles>
@@ -68,6 +70,8 @@
 				<java7_64>jdk1.7.0_55_x64\jre\bin\server\jvm.dll</java7_64>
 				<java8_32>jdk1.8.0_05\jre\bin\client\jvm.dll</java8_32>
 				<java8_64>jdk1.8.0_05_x64\jre\bin\server\jvm.dll</java8_64>
+				
+				<eclipse.ini.path>${aut.home}/eclipse/eclipse.ini</eclipse.ini.path>
 			</properties>
 			<build>
 				<plugins>
@@ -123,6 +127,8 @@
 				<java7_64>jdk1.7.0_55_x64\jre\bin\server\jvm.dll</java7_64>
 				<java8_32>jdk1.8.0_05\jre\bin\client\jvm.dll</java8_32>
 				<java8_64>jdk1.8.0_05_x64\jre\bin\server\jvm.dll</java8_64>
+				
+				<eclipse.ini.path>${aut.home}/eclipse/eclipse.ini</eclipse.ini.path>
 			</properties>
 			<build>
 				<plugins>
@@ -178,6 +184,8 @@
 				<java7_64>jdk1.7.0_55_x64\jre\bin\server\jvm.dll</java7_64>
 				<java8_32>jdk1.8.0_05\jre\bin\client\jvm.dll</java8_32>
 				<java8_64>jdk1.8.0_05_x64\jre\bin\server\jvm.dll</java8_64>
+				
+				<eclipse.ini.path>${aut.home}/eclipse/eclipse.ini</eclipse.ini.path>
 			</properties>
 			<build>
 				<plugins>
@@ -233,6 +241,8 @@
 				<java7_64>jdk1.7.0_55/jre/lib/amd64/server/libjvm.so</java7_64>
 				<java8_32>jdk1.8.0_05_x86/jre/lib/i386/server/libjvm.so</java8_32>
 				<java8_64>jdk1.8.0_05/jre/lib/amd64/server/libjvm.so</java8_64>
+				
+				<eclipse.ini.path>${aut.home}/eclipse/eclipse.ini</eclipse.ini.path>
 			</properties>
 			<build>
 				<plugins>
@@ -290,6 +300,8 @@
 				<java7_64>jdk1.7.0_55/jre/lib/amd64/server/libjvm.so</java7_64>
 				<java8_32>jdk1.8.0_05_x86/jre/lib/i386/server/libjvm.so</java8_32>
 				<java8_64>jdk1.8.0_05/jre/lib/amd64/server/libjvm.so</java8_64>
+				
+				<eclipse.ini.path>${aut.home}/eclipse/eclipse.ini</eclipse.ini.path>
 			</properties>
 			<build>
 				<plugins>
@@ -347,6 +359,8 @@
 				<java7_64>jre1.7.0_65.jre/Contents/Home/lib/server/libjvm.dylib</java7_64>
 				<java8_32>jre1.8.0_11.jre/Contents/Home/lib/server/libjvm.dylib</java8_32>
 				<java8_64>jre1.8.0_11.jre/Contents/Home/lib/server/libjvm.dylib</java8_64>
+				
+				<eclipse.ini.path>${aut.home}/eclipse/Eclipse.app/Contents/MacOS/eclipse.ini</eclipse.ini.path>
 			</properties>
 			<build>
 				<plugins>
@@ -437,7 +451,7 @@
 							<target>
 								<!-- Adding Java version to eclipse.ini -->
 								<echo>Adding Java to eclipse.ini: ${aut.jre}</echo>
-								<replace file="${aut.home}/eclipse/eclipse.ini" token="-vmargs"
+								<replace file="${eclipse.ini.path}" token="-vmargs"
 									value="-vm${line.separator}${aut.jre}${line.separator}-vmargs" />
 								<echo>Installing Jubula bundle org.eclipse.jubula.rc.rcp from
 									${jubula-updatesite}</echo>
