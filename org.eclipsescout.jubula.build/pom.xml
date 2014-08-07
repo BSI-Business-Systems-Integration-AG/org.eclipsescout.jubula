@@ -366,12 +366,12 @@
 				<testexec>${jubula.home}/jubula/testexec</testexec>
 				<dbtool>${jubula.home}/jubula/dbtool</dbtool>
 				
-				<java6_32>jdk1.7.0_67.jdk/Contents/Home/lib/server/libjvm.dylib</java6_32>
-				<java6_64>jdk1.7.0_67.jdk/Contents/Home/lib/server/libjvm.dylib</java6_64>
-				<java7_32>jdk1.7.0_67.jdk/Contents/Home/lib/server/libjvm.dylib</java7_32>
-				<java7_64>jdk1.7.0_67.jdk/Contents/Home/lib/server/libjvm.dylib</java7_64>
-				<java8_32>jdk1.8.0_11.jdk/Contents/Home/lib/server/libjvm.dylib</java8_32>
-				<java8_64>jdk1.8.0_11.jdk/Contents/Home/lib/server/libjvm.dylib</java8_64>
+				<java6_32>jdk1.7.0_67.jdk/Contents/Home/jre/lib/server/libjvm.dylib</java6_32>
+				<java6_64>jdk1.7.0_67.jdk/Contents/Home/jre/lib/server/libjvm.dylib</java6_64>
+				<java7_32>jdk1.7.0_67.jdk/Contents/Home/jre/lib/server/libjvm.dylib</java7_32>
+				<java7_64>jdk1.7.0_67.jdk/Contents/Home/jre/lib/server/libjvm.dylib</java7_64>
+				<java8_32>jdk1.8.0_11.jdk/Contents/Home/jre/lib/server/libjvm.dylib</java8_32>
+				<java8_64>jdk1.8.0_11.jdk/Contents/Home/jre/lib/server/libjvm.dylib</java8_64>
 				
 				<eclipse.ini.path>${aut.home}/eclipse/Eclipse.app/Contents/MacOS/eclipse.ini</eclipse.ini.path>
 			</properties>
