@@ -11,6 +11,7 @@
 
 		<scout-updatesite>https://scout.bsiag.com/repository/eclipse.scout.nightly</scout-updatesite>
 		<luna-updatesite>https://scout.bsiag.com/repository/eclipse.releases.luna</luna-updatesite>
+		<mars-updatesite>https://scout.bsiag.com/repository/eclipse.releases.mars</mars-updatesite>
 		<tycho-version>0.20.0</tycho-version>
 
 		<!-- AUT update configuration -->
@@ -45,6 +46,18 @@
 	</properties>
 
 	<profiles>
+		<!--  <profile>
+			<id>epp_luna_release</id>
+			<properties>
+				<eclipse.version>luna</eclipse.version>
+			</properties>
+		</profile>
+		<profile>
+			<id>epp_mars_release</id>
+			<properties>
+				<eclipse.version>mars</eclipse.version>
+			</properties>
+		</profile> -->
 		<!-- eclipse package -->
 		<profile>
 			<id>luna_standard_win32</id>
@@ -175,7 +188,7 @@
 				<jubula-updatesite>file:///C:/ci/Jubula/updatesite/</jubula-updatesite>
 				
 				<jubula.tests>${project.basedir}/src/main/resources/ScoutIntegrationTests.xml</jubula.tests>
-				<testexec>${jubula.home}\jubula\testexec.exe</testexec>
+				<testexec>${jubula.home}/jubula/testexec.exe</testexec>
 				<dbtool>${jubula.home}/jubula/dbtool.exe</dbtool>
 				
 				<java6_32>j2sdk1.6.0_37\jre\bin\client\jvm.dll</java6_32>
@@ -341,7 +354,7 @@
 				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-macosx.cocoa.x86_64.tar.gz</base.aut.url>
 				<jdk-path>/Users/bsi/slave/java</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
-				<eclipse.starter>eclipse</eclipse.starter>
+				<eclipse.starter>Eclipse.app</eclipse.starter>
 				<jubula.home>/Users/bsi/jubula_8.0.00170/jubula</jubula.home>
 				<aut.home>/Users/bsi/jubula_8.0.00170/AUT</aut.home>
 				<aut.agent.home>${jubula.home}/server</aut.agent.home>
@@ -386,6 +399,7 @@
 										<gunzip src="${project.build.directory}/eclipse.tar.gz" />
 										<untar src="${project.build.directory}/eclipse.tar" dest="${aut.home}" />
 										<chmod file="${aut.home}/eclipse/${eclipse.starter}" perm="755" />
+										<chmod file="${aut.home}/eclipse/${eclipse.starter}/Contents/MacOS/eclipse" perm="755" />
 									</target>
 								</configuration>
 							</execution>
