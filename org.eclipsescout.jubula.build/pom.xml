@@ -352,7 +352,7 @@
 			<id>luna_epp_mac64</id>
 			<properties>
 				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-macosx.cocoa.x86_64.tar.gz</base.aut.url>
-				<jdk-path>/Users/bsi/slave/java</jdk-path>
+				<jdk-path>/Library/Java/JavaVirtualMachines</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>Eclipse.app</eclipse.starter>
 				<jubula.home>/Users/bsi/jubula_8.0.00170/jubula</jubula.home>
