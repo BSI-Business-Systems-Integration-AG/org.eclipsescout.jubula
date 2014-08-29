@@ -46,24 +46,26 @@
 	</properties>
 
 	<profiles>
-		<!--  <profile>
-			<id>epp_luna_release</id>
+		<profile>
+			<id>luna_release</id>
 			<properties>
 				<eclipse.version>luna</eclipse.version>
+				<sites>${scout-updatesite},${luna-updatesite}</sites>
 			</properties>
 		</profile>
 		<profile>
-			<id>epp_mars_release</id>
+			<id>mars_release</id>
 			<properties>
 				<eclipse.version>mars</eclipse.version>
+				<sites>${scout-updatesite},${mars-updatesite}</sites>
 			</properties>
-		</profile> -->
+		</profile>
 		<!-- eclipse package -->
 		<profile>
-			<id>luna_standard_win32</id>
+			<id>standard_win32</id>
 			<properties>
-<!-- 				<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-standard-${eclipse.version}-win32.zip</base.aut.url> -->
-				<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-standard-luna-win32.zip</base.aut.url>
+				<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-standard-${eclipse.version}-win32.zip</base.aut.url>
+<!-- 				<base.aut.url>file:///C:\ci\Jubula\eclipse\eclipse-standard-luna-win32.zip</base.aut.url> -->
 				<jdk-path>C:\ci\jdk</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipsec.exe</eclipse.starter>
@@ -118,10 +120,10 @@
 			</build>
 		</profile>
 		<profile>
-			<id>luna_epp_win32</id>
+			<id>epp_win32</id>
 			<properties>
-<!-- 				<base.aut.url>${base.aut.url.base}/eclipse-scout-${eclipse.version}-SNAPSHOT-win32.win32.x86.zip</base.aut.url> -->
-				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-win32.win32.x86.zip</base.aut.url>
+				<base.aut.url>${base.aut.url.base}/eclipse-scout-${eclipse.version}-SNAPSHOT-win32.win32.x86.zip</base.aut.url>
+<!-- 				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-win32.win32.x86.zip</base.aut.url> -->
 				<jdk-path>C:\ci\jdk</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipsec.exe</eclipse.starter>
@@ -176,10 +178,10 @@
 			</build>
 		</profile>
 	    <profile>
-			<id>luna_epp_win64</id>
+			<id>epp_win64</id>
 			<properties>
-<!-- 				<base.aut.url>${base.aut.url.base}/eclipse-scout-${eclipse.version}-SNAPSHOT-win32.win32.x86_64.zip</base.aut.url> -->
-				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-win32.win32.x86_64.zip</base.aut.url>
+				<base.aut.url>${base.aut.url.base}/eclipse-scout-${eclipse.version}-SNAPSHOT-win32.win32.x86_64.zip</base.aut.url>
+<!-- 				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-win32.win32.x86_64.zip</base.aut.url> -->
 				<jdk-path>C:\ci\jdk</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipsec.exe</eclipse.starter>
@@ -234,10 +236,10 @@
 			</build>
 		</profile>
 		<profile>
-			<id>luna_epp_linux64</id>
+			<id>epp_linux64</id>
 			<properties>
-<!-- 				<base.aut.url>${base.aut.url.base}/eclipse-scout-${eclipse.version}-SNAPSHOT-linux.gtk.x86_64.tar.gz</base.aut.url> -->
-				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-linux.gtk.x86_64.tar.gz</base.aut.url>
+				<base.aut.url>${base.aut.url.base}/eclipse-scout-${eclipse.version}-SNAPSHOT-linux.gtk.x86_64.tar.gz</base.aut.url>
+<!-- 				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-linux.gtk.x86_64.tar.gz</base.aut.url> -->
 				<jdk-path>/home/bsi/slave/java</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipse</eclipse.starter>
@@ -294,10 +296,10 @@
 			</build>
 		</profile>
 		<profile>
-			<id>luna_epp_linux32</id>
+			<id>epp_linux32</id>
 			<properties>
-<!-- 				<base.aut.url>${base.aut.url.base}/eclipse-scout-${eclipse.version}-SNAPSHOT-linux.gtk.x86.tar.gz</base.aut.url> -->
-				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-linux.gtk.x86.tar.gz</base.aut.url>
+				<base.aut.url>${base.aut.url.base}/eclipse-scout-${eclipse.version}-SNAPSHOT-linux.gtk.x86.tar.gz</base.aut.url>
+<!-- 				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-linux.gtk.x86.tar.gz</base.aut.url> -->
 				<jdk-path>/home/bsi/slave/java</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>eclipse</eclipse.starter>
@@ -354,10 +356,10 @@
 			</build>
 		</profile>
 		<profile>
-			<id>luna_epp_mac64</id>
+			<id>epp_mac64</id>
 			<properties>
-<!-- 				<base.aut.url>${base.aut.url.base}/eclipse-scout-${eclipse.version}-SNAPSHOT-macosx.cocoa.x86_64.tar.gz</base.aut.url> -->
-				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-macosx.cocoa.x86_64.tar.gz</base.aut.url>
+				<base.aut.url>${base.aut.url.base}/eclipse-scout-${eclipse.version}-SNAPSHOT-macosx.cocoa.x86_64.tar.gz</base.aut.url>
+<!-- 				<base.aut.url>${base.aut.url.base}/eclipse-scout-luna-SNAPSHOT-macosx.cocoa.x86_64.tar.gz</base.aut.url> -->
 				<jdk-path>/Library/Java/JavaVirtualMachines</jdk-path>
 				<simpleconfigurator.version>1.1.0.v20131217-1203</simpleconfigurator.version>
 				<eclipse.starter>Eclipse.app/Contents/MacOS/eclipse</eclipse.starter>
