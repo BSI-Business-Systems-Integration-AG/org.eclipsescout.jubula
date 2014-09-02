@@ -222,13 +222,13 @@
 								<configuration>
 									<target>
 										<echo>Kill AUT Client to prevent that something won't work</echo>
-										<exec executable="stopautagent" dir="${jubula.home}/server" />
+										<exec executable="stopautagent" dir="${jubula.home}/server" failifexecutionfails="false" timeout="20000" />
 										<echo>Kill it if stop didn't work</echo>
 										<exec executable="killall" dir="${jubula.home}/server">
 											<arg value="autagent" />
 										</exec>
 										<echo>Restart AUT Client</echo>
-										<exec executable="autagent" dir="${jubula.home}/server" />
+										<exec executable="autagent" dir="${jubula.home}/server" spawn="true" />
 										<echo>Preparing AUT in ${aut.home} ${base.aut.url}</echo>
 										<echo>Cleaning ${aut.home}</echo>
 										<delete dir="${aut.home}" />
@@ -288,13 +288,14 @@
 								<configuration>
 									<target>
 										<echo>Kill AUT Client to prevent that something won't work</echo>
-										<exec executable="stopautagent" dir="${jubula.home}/server" />
+										<exec executable="stopautagent" dir="${jubula.home}/server" failifexecutionfails="false" timeout="20000" />
+										</exec>
 										<echo>Kill it if stop didn't work</echo>
 										<exec executable="killall" dir="${jubula.home}/server">
 											<arg value="autagent" />
 										</exec>
 										<echo>Restart AUT Client</echo>
-										<exec executable="autagent" dir="${jubula.home}/server" />
+										<exec executable="autagent" dir="${jubula.home}/server" spawn="true" />
 										<echo>Preparing AUT in ${aut.home} ${base.aut.url}</echo>
 										<echo>Cleaning ${aut.home}</echo>
 										<delete dir="${aut.home}" />
@@ -356,13 +357,13 @@
 								<configuration>
 									<target>
 										<echo>Kill AUT Client to prevent that something won't work</echo>
-										<exec executable="stopautagent" dir="${jubula.home}/server" />
+										<exec executable="stopautagent" dir="${jubula.home}/server" failifexecutionfails="false" timeout="20000" />
 										<echo>Kill it if stop didn't work</echo>
 										<exec executable="killall" dir="${jubula.home}/server">
 											<arg value="autagent" />
 										</exec>
 										<echo>Restart AUT Client</echo>
-										<exec executable="autagent" dir="${jubula.home}/server" />
+										<exec executable="autagent" dir="${jubula.home}/server" spawn="true" />
 										<echo>Preparing AUT in ${aut.home} ${base.aut.url}</echo>
 										<echo>Cleaning ${aut.home}</echo>
 										<delete dir="${aut.home}" />
@@ -424,13 +425,13 @@
 								<configuration>
 									<target>
 										<echo>Kill AUT Client to prevent that something won't work</echo>
-										<exec executable="stopautagent.app/Contents/MacOS/stopautagent" dir="${jubula.home}/server" />
+										<exec executable="stopautagent.app/Contents/MacOS/stopautagent" dir="${jubula.home}/server" failifexecutionfails="false" timeout="20000" />
 										<echo>Kill it if stop didn't work</echo>
 										<exec executable="killall" dir="${jubula.home}/server">
 											<arg value="autagent" />
 										</exec>
 										<echo>Restart AUT Client</echo>
-										<exec executable="autagent.app/Contents/MacOS/autagent" dir="${jubula.home}/server" />
+										<exec executable="autagent.app/Contents/MacOS/autagent" dir="${jubula.home}/server" spawn="true" />
 										<echo>Preparing AUT in ${aut.home} ${base.aut.url}</echo>
 										<echo>Cleaning ${aut.home}</echo>
 										<delete dir="${aut.home}" />
