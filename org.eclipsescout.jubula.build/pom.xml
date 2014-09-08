@@ -51,6 +51,7 @@
 			<properties>
 				<eclipse.version>luna</eclipse.version>
 				<sites>${scout-updatesite},${luna-updatesite}</sites>
+				<scout-updatesite>https://scout.bsiag.com/repository/eclipse.scout.4.0.nightly </scout-updatesite>
 			</properties>
 		</profile>
 		<profile>
@@ -58,6 +59,7 @@
 			<properties>
 				<eclipse.version>mars</eclipse.version>
 				<sites>${scout-updatesite},${mars-updatesite}</sites>
+				<scout-updatesite>https://scout.bsiag.com/repository/eclipse.scout.nightly</scout-updatesite>
 			</properties>
 		</profile>
 		<!-- eclipse package -->
